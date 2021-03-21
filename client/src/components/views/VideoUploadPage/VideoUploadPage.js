@@ -94,7 +94,7 @@ function VideoUploadPage() {
                 <br />
 
                 <Button type="primary" size="large" onClick>
-                    Submit
+                    Submit.
                 </Button>
 
             </Form>
