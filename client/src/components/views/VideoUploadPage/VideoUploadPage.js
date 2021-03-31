@@ -20,10 +20,26 @@ const CategoryOptions = [
 
 function VideoUploadPage() {
 
-    const [VideoTitle, VideosetTitle] = useState("")
+    const [VideoTitle, setVideoTitle] = useState("")
     const [Description, setDescription] = useState("")
     const [Private, setPrivate] = useState(0)
     const [Category, setCategory] = useState("Film & Animation")
+
+    const onTitleChange = (e) => {
+        setVideoTitle(e.currentTarget.value)
+    }
+
+    const onDescriptionChange = (e) => {
+        setDescription(e.currentTarget.value)
+    }
+
+    const onPrivateChange = (e) => {
+        setPrivate(e.currentTarget.value)
+    }
+
+    const onCategoryChange = (e) => {
+        setCategory(e.currentTarget.value)
+    }
 
     return (
         <div style={{ maxWidth: '700px', margin: '2rem auto' }}>
@@ -59,7 +75,7 @@ function VideoUploadPage() {
 
                 <label>Title</label>
                 <Input
-                    onChange
+                    onChange={onTitleChange}
                     value={VideoTitle}
                 />
 
@@ -68,14 +84,14 @@ function VideoUploadPage() {
 
                 <label>Description</label>
                 <TextArea
-                    onChange
+                    onChange={onDescriptionChange}
                     value={Description}
                 />
 
                 <br />
                 <br />
 
-                <select onChange>
+                <select onChange={onPrivateChange}>
                     {PrivateOptions.map((item, index) => (
                         <option key={index} value={item.value}>{item.label}</option>
                     ))}
@@ -84,7 +100,7 @@ function VideoUploadPage() {
                 <br />
                 <br />
 
-                <select onChange>
+                <select onChange={onCategoryChange}>
                     {CategoryOptions.map((item, index) => (
                         <option key={index} value={item.value}>{item.label}</option>
                     ))}
