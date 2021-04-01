@@ -9,11 +9,11 @@ const { Title } = Typography;
 
 const PrivateOptions = [
     { value: 0, label: "Private" },
-    { value: 1, lable: "Public" }
+    { value: 1, label: "Public" }
 ]
 
 const CategoryOptions = [
-    { value: 0, lable: "Film & Animation" },
+    { value: 0, label: "Film & Animation" },
     { value: 1, label: "Autos & Vehicles" },
     { value: 2, label: "Music" },
     { value: 3, label: "Pets & Animals" }
@@ -52,7 +52,7 @@ function VideoUploadPage() {
         Axios.post('/api/video/uploadfiles', formData, config)
             .then(response => {
                 if (response.data.success) {
-
+                    console.log(response.data)
                 } else {
                     alert('비디오 업로드를 실패했습니다.')
                 }

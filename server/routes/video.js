@@ -15,7 +15,7 @@ let storage = multer.diskStorage({
     },
     fileFilter: (req, file, cb) => {
         const ext = path.extname(file.originalname)
-        if (ext != '.mp4') {
+        if (ext != '.mp4' || ext != '.mov') {
             return cb(res.status(400).end('only jpg, png, mp4 is allowed'), false);
         }
         cb(null, true)
@@ -31,6 +31,12 @@ const upload = multer({ storage: storage }).single("file");
 router.post('/uploadfiles', (req, res) => {
 
     // 비디오를 서버에 저장한다.
+    upload(req, res, err => {
+        if (err) {
+            return res.json({ success: false, err })
+        }
+        return res.json({ success: true, url: res.req.file.path, fileName: res.req.file.filename })
+    })
 
 })
 
